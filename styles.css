@@ -1,0 +1,17 @@
+body {
+    background-color: #654321;
+    color: white;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+   
+}
+
+.button {
+    width: 200px;
+    height: 200px;
+    background-color: red;
+}
