@@ -13,7 +13,6 @@ function computerPlay() {
 function playRound(player, computerSelection) {
 
     let resultText = '';
-    const introContainer = document.querySelector("#intro-screen");
     const result = document.querySelector("#result-text");
 
     let winner = 0;
@@ -56,7 +55,6 @@ function playRound(player, computerSelection) {
     }
 
     result.textContent = resultText;
-    introContainer.appendChild(result);
     return winner;
 }
 
@@ -80,15 +78,15 @@ function gameStatus(playerScore, computerScore) {
 function displayWinner(winner) {
     const introText = document.querySelector("#intro-text");
     if (winner === 0) {
-        introText.textContent = "Congradulations! You've successfully beaten the computer.";
+        introText.textContent = "Congratulations! You've successfully beaten the computer.";
     } else if (winner === 1) {
-        introText.textContent = "How unfortunate. You've lost against the computer";
+        introText.textContent = "How unfortunate. You've lost against the computer.";
     } else {
         introText.textContent = "No winner.";
     }
 
     const startBtn = document.getElementById('start-button');
-    startBtn.style.display = "block";
+    startBtn.style.display = "inline";
     
 }
 
@@ -129,10 +127,10 @@ function playGame() {
    
     const btn = document.querySelectorAll('.button');
     btn.forEach((button) => {
-        button.addEventListener('click', buttonInput1)
+        button.addEventListener('click', buttonInput)
     })
 
-    function buttonInput1() {
+    function buttonInput() {
         if (this.classList.contains('rock')) {
             roundResult = playRound("Rock", computerPlay());
         } else if (this.classList.contains('paper')) {
@@ -153,14 +151,14 @@ function playGame() {
         if (gameEnded === true) {
             let winner = roundResult;
             displayWinner(winner);
-            removeButtonInput(buttonInput1);
+            removeButtonInput(buttonInput);
            
         }
     }
   
-    function removeButtonInput(buttonInput1) {
+    function removeButtonInput(buttonInput) {
         btn.forEach((button) => {
-            button.removeEventListener('click', buttonInput1);
+            button.removeEventListener('click', buttonInput);
             console.log("Removed event handler from: " + button.className);
         })
     }
