@@ -58,7 +58,7 @@ function playRound(player, computerSelection) {
     return winner;
 }
 
-function updateScore(playerScore, computerScore, result) {
+function updateScore(playerScore, computerScore) {
     const player = document.querySelector("#player-score");
     const computer = document.querySelector("#computer-score");
 
@@ -98,7 +98,7 @@ function resetGame() {
     resultText.textContent = "Decide your fate";
 
     //resets score div showing on player's screen
-    updateScore(0, 0, 2);
+    updateScore(0, 0);
 }
 
 function stopGame() {
@@ -145,7 +145,7 @@ function playGame() {
             computerScore++;
         }
 
-        updateScore(playerScore, computerScore, roundResult);
+        updateScore(playerScore, computerScore);
         gameEnded = gameStatus(playerScore, computerScore);
 
         if (gameEnded === true) {
@@ -159,14 +159,10 @@ function playGame() {
     function removeButtonInput(buttonInput) {
         btn.forEach((button) => {
             button.removeEventListener('click', buttonInput);
-            console.log("Removed event handler from: " + button.className);
         })
     }
  }
  
-
-
-
 //Checks for button clicks
 function startGame() {
     const startBtn = document.getElementById('start-button');
